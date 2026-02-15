@@ -1,0 +1,36 @@
+# Virtual environment
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Models
+models/
+*.pkl
+*.pt
+*.joblib
+*.pth
+
+# Secrets
+.env
+
+# Data
+*.csv
+*.xlsx
+*.db
+
+# IDE
+.vscode/
+.idea/
+
+# notebooks outputs
+notebooks/.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# temp
+temp.jpg
+local_images/

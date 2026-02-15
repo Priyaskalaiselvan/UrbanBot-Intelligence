@@ -1,0 +1,12 @@
+streamlit
+numpy
+pandas
+scipy
+statsmodels
+joblib
+mysql-connector-python
+nltk
+mysql.connector
+matplotlib
+tensorflow
+scikit learn
