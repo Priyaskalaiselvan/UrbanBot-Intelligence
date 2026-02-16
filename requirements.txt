@@ -1,12 +1,16 @@
 streamlit
 numpy
 pandas
-scipy
-statsmodels
-joblib
+opencv-python
+ultralytics
+torch
+torchvision
+boto3
 mysql-connector-python
-nltk
-mysql.connector
+joblib
 matplotlib
-tensorflow
-scikit learn
+nltk
+langchain-groq
+streamlit-autorefresh
+python-dotenv
+scikit-learn
