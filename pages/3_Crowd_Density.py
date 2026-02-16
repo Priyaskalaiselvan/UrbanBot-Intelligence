@@ -10,6 +10,8 @@ from databases.alerts_db import insert_system_alert
 
 from databases.crowd_density_db import insert_crowd_log
 from utils.s3_uploader import upload_image_to_s3
+from utils.model_loader import ensure_model
+
 
 # ---------------- PAGE CONFIG ----------------
 st.set_page_config(page_title="Crowd Density", layout="wide")
@@ -73,6 +75,10 @@ class CrowdNet(nn.Module):
 
 @st.cache_resource
 def load_model():
+    ensure_model(
+        "models/crowd_density_cc50_v1.pth",
+        "models/crowd_density_cc50_v1.pth"
+    )
     m = CrowdNet()
     m.load_state_dict(torch.load("models/crowd_density_cc50_v1.pth", map_location="cpu"))
     m.eval()

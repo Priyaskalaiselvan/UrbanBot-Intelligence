@@ -6,6 +6,7 @@ from datetime import datetime
 from ultralytics import YOLO
 from databases.road_damage_db import insert_road_damage
 from utils.s3_uploader import upload_image_to_s3
+from utils.model_loader import ensure_model
 
 st.set_page_config(page_title="Road Damage Detection", layout="wide")
 
@@ -43,6 +44,10 @@ st.markdown('<div class="title">🛣 Road Damage Detection Dashboard</div>', uns
 # ---------- load YOLO once ----------
 @st.cache_resource
 def load_model():
+    ensure_model(
+        "models/road_damage_yolo.pt",
+        "models/road_damage_yolo.pt"
+    )
     return YOLO("models/road_damage_yolo.pt")
 
 model = load_model()
@@ -130,7 +135,7 @@ with right:
             st.error(f"⚠️ Detected: {', '.join(set(found_damage))}")
 
             image_id = str(uuid.uuid4())
-            cv2.imwrite("temp.jpg", img)
+            cv2.imwrite("temp.jpg", annotated_img)
 
             image_url = upload_image_to_s3(
             local_path="temp.jpg",

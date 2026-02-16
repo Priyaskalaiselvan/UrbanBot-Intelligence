@@ -9,6 +9,8 @@ from databases.traffic_detection_db import insert_traffic_log
 from utils.email_alert import send_alert_email
 from databases.alerts_db import insert_system_alert
 from utils.s3_uploader import upload_image_to_s3
+from utils.model_loader import ensure_model
+
 
 st.set_page_config(page_title="Traffic Detection", layout="wide")
 
@@ -109,8 +111,13 @@ with right:
         lat, lon = CITY_AREA_DATA[city][area]
 
         with st.spinner("Loading model and detecting vehicles..."):
+            ensure_model(
+                "models/traffic_best.pt",
+                "models/traffic_best.pt"
+            )
+
             model = YOLO("models/traffic_best.pt")
-            
+
 
         file_bytes = np.asarray(bytearray(uploaded.read()), dtype=np.uint8)
         img = cv2.imdecode(file_bytes, 1)

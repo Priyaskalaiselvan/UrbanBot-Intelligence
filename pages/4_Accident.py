@@ -8,7 +8,7 @@ from databases.accident_detection_db import insert_accident_log
 from utils.email_alert import send_alert_email
 from databases.alerts_db import insert_system_alert
 from utils.s3_uploader import upload_image_to_s3
-
+from utils.model_loader import ensure_model
 
 st.set_page_config(page_title="Accident Detection", layout="wide")
 
@@ -106,6 +106,8 @@ with right:
         lat, lon = CITY_AREA_DATA[city][area]
 
         with st.spinner("Loading model and detecting..."):
+            ensure_model("models/accident_best.pt","models/accident_best.pt")
+
             model = YOLO("models/accident_best.pt")
 
         file_bytes = np.asarray(bytearray(uploaded.read()), dtype=np.uint8)
