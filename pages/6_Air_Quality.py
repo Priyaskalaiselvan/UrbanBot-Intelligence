@@ -4,12 +4,24 @@ import joblib
 import matplotlib.pyplot as plt
 from databases.aqi_db import insert_aqi_log
 from datetime import datetime
+from utils.model_loader import ensure_model
+
 
 
 
 # ---------- load models ----------
 def load_models():
 
+    # -------- ensure models from S3 --------
+    ensure_model("models/aqi_calculation.pkl", "models/aqi_calculation.pkl")
+    ensure_model("models/aqi_calc_columns.pkl", "models/aqi_calc_columns.pkl")
+
+    ensure_model("models/chennai_arima.pkl", "models/chennai_arima.pkl")
+    ensure_model("models/bangalore_arima.pkl", "models/bangalore_arima.pkl")
+    ensure_model("models/delhi_arima.pkl", "models/delhi_arima.pkl")
+    ensure_model("models/jaipur_arima.pkl", "models/jaipur_arima.pkl")
+
+    # -------- load locally (after ensured) --------
     rf_model = joblib.load("models/aqi_calculation.pkl")
     cols = joblib.load("models/aqi_calc_columns.pkl")
 
