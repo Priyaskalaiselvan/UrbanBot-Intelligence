@@ -101,23 +101,24 @@ llm = ChatGroq(
 )
 
 # ---------------- DB ----------------
-
-def sql(query):
-    return mysql.connector.connect(
+def sql(query, params=None):
+    conn = mysql.connector.connect(
         host=os.getenv("DB_HOST"),
         user=os.getenv("DB_USER"),
         password=os.getenv("DB_PASS"),
         database=os.getenv("DB_NAME"),
         port=3306
     )
+
     cur = conn.cursor()
-    cur.execute(query)
+    cur.execute(query, params or ())
 
     rows = cur.fetchall()
-    cols = [c[0] for c in cur.description]
+    cols = [c[0] for c in cur.description] if cur.description else []
 
     conn.close()
     return rows, cols
+
 
 # ---------------- EMAIL ----------------
 def send_email_tool(subject, body):
