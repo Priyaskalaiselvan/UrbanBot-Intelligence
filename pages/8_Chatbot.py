@@ -140,15 +140,19 @@ def email_agent(report_text, user_request):
 # ---------------- SCHEMA AUTO ----------------
 @st.cache_data
 def get_tables():
-    return [r[0] for r in sql("SHOW TABLES")]
+    rows, _ = sql("SHOW TABLES")
+    return [r[0] for r in rows]
+
 
 @st.cache_data
 def get_columns(t):
-    return [r[0] for r in sql(f"SHOW COLUMNS FROM {t}")]
+    rows, _ = sql(f"SHOW COLUMNS FROM {t}")
+    return [r[0] for r in rows]
+
 
 @st.cache_data
 def build_schema():
-    return {t:get_columns(t) for t in get_tables()}
+    return {t: get_columns(t) for t in get_tables()}
 
 def clean_sql(s):
     p = s.lower().find("select")
@@ -162,14 +166,14 @@ def clean_sql(s):
 @st.cache_data
 
 def build_schema_text():
-    return mysql.connector.connect(
+    conn = mysql.connector.connect(
         host=os.getenv("DB_HOST"),
         user=os.getenv("DB_USER"),
         password=os.getenv("DB_PASS"),
         database=os.getenv("DB_NAME"),
         port=3306
     )
-    
+
     cur = conn.cursor()
 
     cur.execute("SHOW TABLES")
@@ -183,8 +187,7 @@ def build_schema_text():
         lines.append(f"{t}: {', '.join(cols)}")
 
     conn.close()
-    return "\n".join(lines)
-
+    return "\n".join(lines)  
 
 # ==============================
 # SQL SAFETY FILTER
