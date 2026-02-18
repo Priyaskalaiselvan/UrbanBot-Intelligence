@@ -5,6 +5,8 @@ It integrates multiple urban domains such as traffic, crowd density, AQI, accide
 The system is designed to support data-driven decision making for smart city analysis and monitoring.  
 UrbanBot is deployed on AWS EC2 for scalable and remote dashboard access.
 
+![Main](screenshots/main.png)
+
 ---
 
 ## 🚀 Key Features
@@ -29,7 +31,7 @@ The main dashboard provides a centralized overview of all urban intelligence mod
 It displays key indicators, recent records, and trend summaries in one place.  
 Users can quickly understand system-wide city conditions.  
 
-![Dashboard](screenshots/Dashboard.jpeg)
+![Dashboard](screenshots/Dashboard.png)
 
 ---
 
@@ -39,7 +41,7 @@ The traffic page analyzes congestion levels across areas and time periods.
 Trend visuals support pattern recognition.  
 Useful for traffic planning and analysis.
 
-![Traffic](screenshots/Traffic.jpeg)
+![Traffic](screenshots/Traffic.png)
 
 ---
 
@@ -49,7 +51,7 @@ This module tracks crowd density levels across monitored locations.
 Density is categorized for quick interpretation.    
 Supports safety and event monitoring.
 
-![Crowd](screenshots/Crowd.jpeg)
+![Crowd](screenshots/Crowd.png)
 
 ---
 
@@ -60,7 +62,7 @@ Structured tables enable fast filtering and review.
 Helps identify risk-prone zones.  
 Supports response planning and analysis.
 
-![Accident](screenshots/Accident.jpeg)
+![Accident](screenshots/Accident.png)
 
 ---
 
@@ -71,7 +73,7 @@ Raw AQI values are converted into readable categories.
 Trend charts show environmental patterns.  
 Supports environmental awareness and monitoring.
 
-![AQI](screenshots/AQI.jpeg)
+![AQI](screenshots/AQI.png)
 
 ---
 
@@ -81,7 +83,7 @@ The road damage module records and tracks reported road issues across locations.
 This helps identify high-risk zones and maintenance priorities.  
 Supports smarter infrastructure planning and repair scheduling.
 
-![Road Damage](screenshots/Road_damage.jpeg)
+![Road Damage](screenshots/Road_damage.png)
 
 ---
 
@@ -91,7 +93,7 @@ The citizen complaints page manages public issue reports by department and prior
 Each record includes location, category, and urgency level.  
 Structured tables help teams filter and respond efficiently.  
 
-![Citizen Complaints](screenshots/Complaints.jpeg)
+![Citizen Complaints](screenshots/Complaints.png)
 
 ---
 
@@ -102,7 +104,7 @@ Users can ask natural language questions about urban data and trends.
 It generates intelligent summaries and insights from the database.  
 Enhances usability through conversational analytics access.
 
-![LLM Chatbot](screenshots/Chatbot.jpeg)
+![LLM Chatbot](screenshots/Chatbot.png)
 
 ---
 
